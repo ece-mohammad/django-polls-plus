@@ -1,0 +1,11 @@
+# database
+*.sqlite3
+
+# complied python code
+__pycache__/
+*.pyc
+
+# backuo files
+*.back
+
+# __pycache__/
