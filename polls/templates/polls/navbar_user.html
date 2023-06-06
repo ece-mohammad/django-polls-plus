@@ -1,0 +1,16 @@
+<!-- login/logout -->
+{% if user.is_authenticated %}
+  <div>
+    <a href="{% url 'logout' %}">Logout</a>
+  </div>
+{% else %}
+  <!-- login -->
+  <div>
+    <a href="{% url 'login' %}">Login</a>
+  </div>
+
+  <!-- sign up-->
+  <div>
+    <a href="{% url 'accounts:signup' %}">Sign up</a>
+  </div>
+{% endif %}

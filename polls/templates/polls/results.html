@@ -1,0 +1,31 @@
+<!-- tenplates/polls/results.html -->
+
+{% extends "polls/base_page.html" %}
+
+<!-- title -->
+{% block title %}Question Results{% endblock %}
+
+<!-- content -->
+{% block content %}
+<section>
+  <h2>{{ question.question_text }}</h2>
+
+  <ul>
+  {% for choice in question.choice_set.all %}
+    <li>
+      <em>{{ choice.choice_text }} </em> -- {{ choice.votes }} vote{{ choice.votes|pluralize }}
+    </li>
+  {% endfor %}
+  </ul>
+
+  <div>
+    <a href="{% url 'polls:question-details' question.id %}">Vote again?</a>
+  </div>
+
+  <div>
+      <a href="{% url 'polls:index' %}">Other questions?</a>
+  </div>
+</section>
+{% endblock %}
+
+

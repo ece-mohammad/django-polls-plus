@@ -1,0 +1,41 @@
+<!-- templates/polls/index.html -->
+
+{% extends "polls/base_page.html" %}
+
+<!-- title -->
+{% block title %}Homepage{% endblock %}
+
+<!-- styling -->
+{% block styling %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'polls/style.css' %}">
+{% endblock %}
+
+<!-- content -->
+{% block content %}
+<section>
+  <!-- list latest questions -->
+{% if latest_questions_list %}
+  <h2>Recent Questions</h2>
+  <ul id="question_list">
+    {% for question in latest_questions_list %}
+    <li id="question_text">
+      <a href="{% url 'polls:question-details'  question.id %}" >{{ question.question_text }}</a>
+    </li>
+    {% endfor %}
+  </ul>
+
+  {% else %} <!-- latest_questions_list  -->
+  <p><strong>No questions are available at the moment.</strong></p>
+  {% endif %} <!-- latest_questions_list -->
+
+  {% if user.is_authenticated %}
+    <a href="{% url 'polls:question-add' %}">Add question?</a>
+  {% else %}
+    <a href="{% url 'login' %}">Login to add questions</a>
+  {% endif %} <!-- user.is_authenticated -->
+
+</section>
+{% endblock %}
+
+

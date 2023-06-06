@@ -1,0 +1,41 @@
+<!-- templates/polls/base.html -->
+{% extends "base/base_page.html" %}
+
+<!-- navbar -->
+{% block navbar %}
+<div>
+  <!-- home page -->
+  <a href="{% url 'polls:index' %}">Home</a>
+ 
+</div>
+{% endblock %}
+
+<!-- user -->
+{% block user %}
+    <!-- login/logout -->
+    {% if user.is_authenticated %}
+      <div>
+        Hi, 
+        <a href="{% url 'accounts:profile' user.username %}">{{ user.username }}</a>
+      </div>
+      <div>
+        <a href="{% url 'logout' %}">Logout</a>
+      </div>
+
+    {% else %} <!-- user.is_authenticated -->
+
+      <!-- login -->
+      <div>
+        <a href="{% url 'login' %}">Login</a>
+      </div>
+
+      <!-- sign up-->
+      <div>
+        <a href="{% url 'accounts:signup' %}">Sign up</a>
+      </div>
+    {% endif %}
+  {% endblock %} <!-- user -->
+
+
+<!-- content -->
+

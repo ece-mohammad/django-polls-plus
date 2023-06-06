@@ -1,0 +1,25 @@
+<!-- templates/polls/question_add.html -->
+
+{% extends "polls/base_page.html" %}
+
+<!-- title -->
+{% block title %}Add Question{% endblock %}
+
+<!-- content -->
+{% block content %}
+<h2>Add New Question</h2>
+<form method="POST">
+  {%  csrf_token %}
+  {{ form.as_p }}
+  <!-- <fieldset> -->
+  <!--   <legend>Choices</legend> -->
+  <!--   {{ choice_formset.management_form }} -->
+  <!--   {% for choice_form in choice_formset.forms %} -->
+  <!--     {{ choice_form.as_p }} -->
+  <!--   {% endfor %} -->
+  <!-- </fieldset> -->
+  <button type="submit" value="Save">Add</button>
+</form>
+{% endblock %}
+
+

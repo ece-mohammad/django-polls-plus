@@ -1,0 +1,35 @@
+<!-- tenplates/polls/details.html -->
+
+{% extends "polls/base_page.html" %}
+
+<!-- title -->
+{% block title %}Question Details{% endblock %}
+
+
+<!-- content -->
+{% block content %}
+<form action="{% url 'polls:question-vote' question.id %}" method="post">
+
+  {% csrf_token %}
+
+  <fieldset>
+    <legend><h1>{{ question.question_text }}</h1></legend>
+
+    {% if error_message %}
+      <p><strong>{{ error_message }}</strong></p>
+    {% endif %}
+
+    {% for choice in question.choice_set.all %}
+    <input type="radio" name="choice" id="choice_{{ forloop.counter }}" value="{{ choice.id }}">
+       <label for="choice_{{ forloop.counter }}">{{ choice.choice_text }}</label>
+       <br>
+    {% endfor %}
+
+  </fieldset>
+
+  <input type="submit" value="Vote">
+
+</form>
+{% endblock %}
+
+

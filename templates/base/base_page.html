@@ -1,0 +1,41 @@
+<!-- templates/base/base_page.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- ttile -->
+    <title>{% block title %}{% endblock %}</title>
+
+    <!-- styling -->
+    {% block styling %}{% endblock %}
+  </head>
+
+  <body>
+
+    <!-- navbar -->
+    <nav>
+      {% block navbar %}
+      {% endblock %}
+
+      {% block user %}
+      {% endblock %}
+    </nav>
+
+    <!-- content -->
+    <main>
+      {% block content %}
+      {% endblock %}
+    </main>
+
+    <!-- footer -->
+    <footer>
+      {% block footer %}{% endblock %}
+    </footer>
+
+  </body>
+</html>
